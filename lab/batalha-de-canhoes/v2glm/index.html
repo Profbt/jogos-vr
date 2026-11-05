@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <title>Batalha de Canhões — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="title-block">
+          <span class="kicker">Matemática • Jogos VR</span>
+          <h1 id="title">Batalha de Canhões</h1>
+          <p class="subtitle">Resolva a conta, desbloqueie armas especiais e use ângulo, força e vento a seu favor.</p>
+        </div>
+        <div class="top-actions">
+          <button id="sound-toggle" class="icon-btn" type="button" aria-label="Som ligado" title="Som">
+            <span class="icon-on">🔊</span>
+          </button>
+          <button id="theme-toggle" class="icon-btn" type="button" aria-label="Alternar tema" title="Tema">
+            <span class="icon-theme">🌙</span>
+          </button>
+          <button id="restart" class="btn" type="button">Sair</button>
+        </div>
+      </header>
+
+      <main>
+        <div class="hud">
+          <div class="hp hp-p1" data-side="left">
+            <div class="hp-info">
+              <span class="hp-name" id="name-p1">Jogador 1</span>
+              <span class="hp-streak" id="streak-p1" hidden>🔥 0</span>
+            </div>
+            <div class="hp-bar"><div class="hp-fill" id="hp-p1"></div></div>
+            <span class="hp-num" id="hpnum-p1">100</span>
+          </div>
+
+          <div class="hud-center">
+            <div class="score-block">
+              <span class="score-label">Pontos</span>
+              <span class="score-value" id="score">0</span>
+            </div>
+            <span class="pill" id="wind-pill">
+              <span class="pill-icon">💨</span>
+              <span id="wind">Vento: —</span>
+            </span>
+            <span class="pill" id="turn-label">—</span>
+            <span class="pill timer-pill">⏱ <strong id="timer">—</strong></span>
+          </div>
+
+          <div class="hp hp-p2" data-side="right">
+            <span class="hp-num" id="hpnum-p2">100</span>
+            <div class="hp-bar"><div class="hp-fill" id="hp-p2"></div></div>
+            <div class="hp-info">
+              <span class="hp-name" id="name-p2">Jogador 2</span>
+              <span class="hp-streak" id="streak-p2" hidden>🔥 0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="board-wrap">
+          <canvas id="board" width="960" height="540" aria-label="Campo de batalha"></canvas>
+          <div class="board-hint" id="board-hint" hidden></div>
+          <div class="drag-hint" id="drag-hint">Arraste do canhão para mirar</div>
+        </div>
+
+        <!-- Painel de pergunta -->
+        <section id="question-box" class="panel question-panel" hidden>
+          <p class="panel-kicker">
+            <span class="kicker-badge">🎯 Desafio</span>
+            Acerte a conta e ganhe <strong>dano em dobro</strong> +1 na sequência de armas
+          </p>
+          <div class="question-row">
+            <span class="question" id="question-text">7 × 8</span>
+            <span class="eq">=</span>
+            <input id="question-answer" type="number" inputmode="numeric" placeholder="?" aria-label="Resposta" autocomplete="off" />
+            <button id="question-submit" class="btn btn-primary" type="button">Responder</button>
+          </div>
+          <p class="panel-feedback" id="question-feedback" hidden></p>
+          <div class="mini-timer"><div id="question-timerbar"></div></div>
+        </section>
+
+        <!-- Painel de armas + controles -->
+        <section id="controls" class="panel controls-panel" hidden>
+          <div class="weapon-bar" id="weapon-bar">
+            <span class="weapon-label">Arma:</span>
+            <div class="weapon-list" id="weapon-list"></div>
+          </div>
+          <div class="weapon-info" id="weapon-info" hidden>
+            <span class="weapon-name" id="weapon-name"></span>
+            <span class="weapon-desc" id="weapon-desc"></span>
+          </div>
+          <div class="sliders">
+            <div class="slider-row">
+              <label for="angle">Ângulo <strong id="angle-val">45°</strong></label>
+              <input id="angle" type="range" min="5" max="85" value="45" />
+            </div>
+            <div class="slider-row">
+              <label for="power">Força <strong id="power-val">60</strong></label>
+              <input id="power" type="range" min="20" max="100" value="60" />
+            </div>
+          </div>
+          <button id="fire" class="btn btn-fire" type="button">
+            <span class="fire-icon">🔥</span> FOGO!
+          </button>
+        </section>
+      </main>
+
+      <footer class="bottom">
+        <p>Pratique operações e estimativas de trajetória parabólica enquanto diverte.</p>
+      </footer>
+    </div>
+
+    <!-- Menu inicial -->
+    <div id="menu" class="overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+        <div class="modal-emoji">💥</div>
+        <h2 id="menu-title">Batalha de Canhões</h2>
+        <p class="modal-desc">Acerte contas para desbloquear armas especiais. Cada acerto aumenta sua sequência. Cuidado com o vento — ele muda a cada turno!</p>
+
+        <div class="mode-group">
+          <span class="group-label">Modo de jogo</span>
+          <div class="mode-buttons">
+            <button id="mode-pvp" class="btn btn-primary mode-btn" type="button">
+              <span class="mode-icon">👥</span>
+              <span class="mode-text">2 Jogadores</span>
+            </button>
+            <button id="mode-ai" class="btn mode-btn" type="button">
+              <span class="mode-icon">🤖</span>
+              <span class="mode-text">Vs Computador</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="diff-group">
+          <span class="group-label">Dificuldade</span>
+          <div class="diff-buttons">
+            <button class="btn diff-btn" data-diff="easy" type="button">😌 Fácil</button>
+            <button class="btn diff-btn active" data-diff="medium" type="button">🎯 Médio</button>
+            <button class="btn diff-btn" data-diff="hard" type="button">😎 Difícil</button>
+          </div>
+        </div>
+
+        <div class="menu-tip">
+          <span>⭐ Armas especiais liberadas por sequência de acertos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultado -->
+    <div id="result" class="overlay" hidden>
+      <div class="modal result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div class="result-stars" id="result-stars"></div>
+        <div class="modal-emoji" id="result-icon" aria-hidden="true">🏆</div>
+        <h2 id="result-title">Fim de jogo</h2>
+        <p id="result-text"></p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-num" id="stat-score">0</span>
+            <span class="stat-label">Pontos</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="stat-acc">0%</span>
+            <span class="stat-label">Acertos</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="stat-shots">0</span>
+            <span class="stat-label">Tiros</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="stat-time">0s</span>
+            <span class="stat-label">Duração</span>
+          </div>
+        </div>
+
+        <button id="play-again" class="btn btn-primary full" type="button">Jogar de novo</button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

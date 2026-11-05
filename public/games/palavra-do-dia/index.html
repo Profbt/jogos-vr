@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Palavra do Dia — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <span class="kicker">Palavra do Dia</span>
+          <h1>Descubra a palavra</h1>
+          <p class="subtitle">5 letras · 6 tentativas · uma por dia</p>
+        </div>
+        <button id="mode-btn" class="btn" type="button">Modo livre</button>
+      </header>
+
+      <main class="game">
+        <div id="board" class="board" role="grid" aria-label="Tabuleiro de tentativas"></div>
+        <p id="message" class="message" role="status" aria-live="polite">
+          Digite uma palavra de 5 letras.
+        </p>
+        <div id="keyboard" class="keyboard" aria-label="Teclado virtual"></div>
+      </main>
+
+      <footer class="bottom">
+        <button id="help-btn" class="link-btn" type="button">Como jogar</button>
+        <button id="result-btn" class="link-btn" type="button" hidden>Ver resultado</button>
+        <button id="share-btn" class="link-btn" type="button">Compartilhar</button>
+      </footer>
+    </div>
+
+    <div id="result" class="overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div id="result-icon" class="modal-icon" aria-hidden="true">🏆</div>
+        <h2 id="result-title">Você acertou!</h2>
+        <p id="result-text">A palavra era JOGAR.</p>
+
+        <div class="stats">
+          <div><span id="stat-played">0</span><small>Jogos</small></div>
+          <div><span id="stat-win">0%</span><small>Acertos</small></div>
+          <div><span id="stat-streak">0</span><small>Sequência</small></div>
+        </div>
+
+        <div class="modal-actions">
+          <button id="result-share" class="btn btn-primary" type="button">
+            Compartilhar
+          </button>
+          <button id="result-free" class="btn" type="button">Modo livre</button>
+          <button id="result-close" class="btn" type="button">Fechar</button>
+        </div>
+
+        <pre id="share-output" class="share-output" hidden></pre>
+      </div>
+    </div>
+
+    <div id="help" class="overlay" hidden>
+      <div class="modal help" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <h2 id="help-title">Como jogar</h2>
+        <p>Descubra a palavra de 5 letras em até 6 tentativas.</p>
+
+        <div class="example">
+          <div class="example-tiles">
+            <span class="tile correct">J</span>
+            <span class="tile">O</span>
+            <span class="tile">G</span>
+            <span class="tile">A</span>
+            <span class="tile">R</span>
+          </div>
+          <p><strong>J</strong> está na palavra e na posição certa.</p>
+        </div>
+
+        <div class="example">
+          <div class="example-tiles">
+            <span class="tile">C</span>
+            <span class="tile present">A</span>
+            <span class="tile">S</span>
+            <span class="tile">A</span>
+            <span class="tile">S</span>
+          </div>
+          <p><strong>A</strong> está na palavra, mas em outra posição.</p>
+        </div>
+
+        <div class="example">
+          <div class="example-tiles">
+            <span class="tile">L</span>
+            <span class="tile absent">I</span>
+            <span class="tile">V</span>
+            <span class="tile">R</span>
+            <span class="tile">O</span>
+          </div>
+          <p><strong>I</strong> não aparece na palavra.</p>
+        </div>
+
+        <p class="help-note">
+          Acentos não são considerados. A palavra do dia é a mesma para todo mundo.
+        </p>
+
+        <button id="help-close" class="btn btn-primary full" type="button">
+          Entendi
+        </button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

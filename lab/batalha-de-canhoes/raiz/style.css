@@ -1,0 +1,382 @@
+:root {
+  --bg: #f1f5f9;
+  --panel: #ffffff;
+  --panel-2: #f8fafc;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --brand: #2563eb;
+  --brand-ink: #ffffff;
+  --accent: #f59e0b;
+  --correct: #16a34a;
+  --p1: #2563eb;
+  --p2: #ea580c;
+  --shadow: 0 10px 30px rgb(15 23 42 / 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0b1120;
+  --panel: #111827;
+  --panel-2: #0f172a;
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --line: #1f2937;
+  --brand: #3b82f6;
+  --brand-ink: #ffffff;
+  --accent: #fbbf24;
+  --correct: #22c55e;
+  --shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  width: min(880px, 100%);
+  margin: 0 auto;
+  padding: clamp(14px, 3vw, 26px);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+h1 {
+  margin: 4px 0 0;
+  font-size: clamp(22px, 4.6vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--brand);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-ink);
+}
+
+.full {
+  width: 100%;
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.hp {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 150px;
+}
+
+.hp-p2 {
+  justify-content: flex-end;
+}
+
+.hp-name {
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.hp-num {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  min-width: 24px;
+  text-align: center;
+}
+
+.hp-bar {
+  width: clamp(60px, 16vw, 130px);
+  height: 10px;
+  border-radius: 6px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.hp-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  transition: width 0.35s ease;
+}
+
+#hp-p1 { background: var(--p1); }
+#hp-p2 { background: var(--p2); }
+
+.hud-center {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pill strong {
+  color: var(--ink);
+}
+
+.board-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: #0ea5e9;
+}
+
+#board {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: manipulation;
+}
+
+.panel {
+  margin-top: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel-kicker {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.question-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.question {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  min-width: 110px;
+}
+
+#question-answer {
+  width: 96px;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: inherit;
+  text-align: center;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 7px 8px;
+}
+
+#question-answer:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+
+.panel-feedback {
+  margin: 10px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.panel-feedback.ok { color: var(--correct); }
+.panel-feedback.bad { color: #dc2626; }
+
+.mini-timer {
+  margin-top: 12px;
+  height: 6px;
+  border-radius: 4px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+#question-timerbar {
+  height: 100%;
+  width: 100%;
+  background: var(--accent);
+  transition: width 0.1s linear;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.slider-row label {
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 110px;
+}
+
+.slider-row strong {
+  color: var(--brand);
+}
+
+.slider-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--brand);
+  height: 28px;
+}
+
+#fire {
+  font-size: 15px;
+  padding: 12px;
+}
+
+.bottom {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgb(2 6 23 / 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  width: min(380px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.35);
+  display: grid;
+  gap: 10px;
+}
+
+.modal-icon {
+  font-size: 40px;
+}
+
+.modal h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.modal p {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .hp {
+    min-width: 0;
+  }
+
+  .question {
+    font-size: 22px;
+    min-width: 90px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

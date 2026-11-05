@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Modelo de Jogo — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <span class="kicker">Modelo</span>
+          <h1 id="title">Clique no Alvo</h1>
+          <p class="subtitle">Troque este jogo pelo seu. O contrato já está pronto.</p>
+        </div>
+        <button id="restart" class="btn" type="button">Reiniciar</button>
+      </header>
+
+      <main>
+        <div class="hud">
+          <span class="pill">Alvos: <strong id="score">0</strong>/<span id="total">10</span></span>
+          <span class="pill">Tempo: <strong id="timer">0,0s</strong></span>
+        </div>
+
+        <div id="board" class="board" aria-label="Área do jogo">
+          <p id="start-hint" class="start-hint">Clique no alvo para começar</p>
+        </div>
+      </main>
+
+      <footer class="bottom">
+        <p>Este é o arquivo <code>game.js</code>. Leia os comentários e adapte.</p>
+      </footer>
+    </div>
+
+    <div id="result" class="overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div class="modal-icon" aria-hidden="true">🎯</div>
+        <h2 id="result-title">Muito bem!</h2>
+        <p id="result-text">Você concluiu o jogo.</p>
+        <button id="play-again" class="btn btn-primary full" type="button">Jogar de novo</button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

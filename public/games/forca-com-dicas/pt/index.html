@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Forca com Dicas — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+    <div class="app">
+      <header class="top">
+        <div>
+          <span class="kicker">Vocabulário de Português</span>
+          <h1 id="title">Forca com Dicas</h1>
+          <p class="subtitle">Três níveis. Leia a dica e descubra a palavra.</p>
+        </div>
+        <div class="actions">
+          <button id="mute" class="btn" type="button" aria-pressed="false">🔊 Som</button>
+          <button id="restart" class="btn" type="button">Reiniciar</button>
+        </div>
+      </header>
+
+      <main>
+        <div class="hud">
+          <span class="pill">
+            Nível <strong id="level">1</strong>/<span id="level-total">3</span>
+            · <span id="level-name">Fácil</span>
+          </span>
+          <span class="pill">Palavra <strong id="round">1</strong>/<span id="total">5</span></span>
+          <span class="pill">Pontos <strong id="score">0</strong>/<span id="max-score">300</span></span>
+          <span class="pill pill-streak" id="streak-pill">Sequência <strong id="streak">0</strong></span>
+          <span class="pill">Vidas <strong id="lives">6</strong></span>
+          <span class="pill">Tempo <strong id="timer">0:00</strong></span>
+        </div>
+
+        <div class="stage">
+          <div class="gallows" aria-hidden="true">
+            <svg viewBox="0 0 200 220" role="presentation" focusable="false" data-stage="0" data-result="">
+              <ellipse cx="100" cy="212" rx="86" ry="6" fill="var(--edge)" opacity="0.18" />
+              <g stroke="var(--edge)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+                <rect x="14" y="196" width="172" height="14" rx="5" fill="var(--wood)" />
+                <path d="M54 76 L88 32" stroke-width="13" fill="none" />
+                <path d="M54 76 L88 32" stroke="var(--wood)" stroke-width="5" fill="none" />
+                <rect x="40" y="18" width="12" height="180" rx="3" fill="var(--wood)" />
+                <rect x="40" y="18" width="116" height="14" rx="4" fill="var(--wood)" />
+              </g>
+              <g class="hang">
+                <path class="rope" d="M142 32 V52" stroke="var(--edge)" stroke-width="5" stroke-linecap="round" fill="none" />
+                <g class="part p1">
+                  <circle cx="142" cy="72" r="21" fill="var(--accent)" stroke="var(--edge)" stroke-width="4" />
+                  <g class="face f-happy"><circle cx="135" cy="68" r="3" fill="var(--edge)"/><circle cx="149" cy="68" r="3" fill="var(--edge)"/><path d="M133 78 Q142 87 151 78" stroke="var(--edge)" stroke-width="3.5" stroke-linecap="round" fill="none"/></g>
+                  <g class="face f-worried"><circle cx="135" cy="68" r="3" fill="var(--edge)"/><circle cx="149" cy="68" r="3" fill="var(--edge)"/><path d="M130 62 L139 60 M154 62 L145 60" stroke="var(--edge)" stroke-width="3" stroke-linecap="round"/><path d="M135 82 Q142 77 149 82" stroke="var(--edge)" stroke-width="3.5" stroke-linecap="round" fill="none"/></g>
+                  <g class="face f-scared"><circle cx="135" cy="68" r="5" fill="#fff" stroke="var(--edge)" stroke-width="2.5"/><circle cx="149" cy="68" r="5" fill="#fff" stroke="var(--edge)" stroke-width="2.5"/><circle cx="135" cy="69" r="2" fill="var(--edge)"/><circle cx="149" cy="69" r="2" fill="var(--edge)"/><ellipse cx="142" cy="81" rx="4.5" ry="6" fill="var(--edge)"/></g>
+                  <g class="face f-dead"><path d="M131 64 L139 72 M139 64 L131 72 M145 64 L153 72 M153 64 L145 72" stroke="var(--edge)" stroke-width="3.5" stroke-linecap="round"/><path d="M134 82 H150" stroke="var(--edge)" stroke-width="3.5" stroke-linecap="round"/></g>
+                </g>
+                <g class="part p2" stroke-linecap="round" fill="none"><path d="M142 94 V142" stroke="var(--edge)" stroke-width="12"/><path d="M142 94 V142" stroke="var(--accent)" stroke-width="6"/></g><g class="part p3" stroke-linecap="round" fill="none"><path d="M142 106 L116 130" stroke="var(--edge)" stroke-width="12"/><path d="M142 106 L116 130" stroke="var(--accent)" stroke-width="6"/></g><g class="part p4" stroke-linecap="round" fill="none"><path d="M142 106 L168 130" stroke="var(--edge)" stroke-width="12"/><path d="M142 106 L168 130" stroke="var(--accent)" stroke-width="6"/></g><g class="part p5" stroke-linecap="round" fill="none"><path d="M142 142 L120 180" stroke="var(--edge)" stroke-width="12"/><path d="M142 142 L120 180" stroke="var(--accent)" stroke-width="6"/></g><g class="part p6" stroke-linecap="round" fill="none"><path d="M142 142 L164 180" stroke="var(--edge)" stroke-width="12"/><path d="M142 142 L164 180" stroke="var(--accent)" stroke-width="6"/></g>
+              </g>
+            </svg>
+            <div id="hearts" class="hearts" aria-hidden="true"></div>
+          </div>
+
+          <div class="play">
+            <div class="hint-card">
+              <span class="hint-label">Dica</span>
+              <p><strong id="hint-class">—</strong> <span id="hint-meaning">—</span></p>
+            </div>
+
+            <div id="word" class="word" role="img" aria-label="Palavra a descobrir"></div>
+
+            <p id="status" class="status" role="status" aria-live="polite">
+              Escolha uma letra para começar.
+            </p>
+          </div>
+        </div>
+
+        <div class="tools">
+          <button id="extra-hint" class="btn" type="button">💡 Revelar uma letra (−4 pts)</button>
+          <span class="tip">Dica: digite direto no teclado do computador.</span>
+        </div>
+
+        <div id="keyboard" class="keyboard" role="group" aria-label="Teclado de letras"></div>
+
+        <footer class="bottom">
+          <p>Letras acentuadas contam como a letra-base: C também revela Ç.</p>
+        </footer>
+      </main>
+    </div>
+
+    <div id="round-overlay" class="overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="round-title">
+        <div id="round-icon" class="modal-icon" aria-hidden="true">✓</div>
+        <h2 id="round-title">Acertou!</h2>
+        <p id="round-word" class="answer-word">PALAVRA</p>
+        <p id="round-detail" class="modal-detail"></p>
+        <p id="round-points" class="modal-points"></p>
+        <button id="next-word" class="btn btn-primary full" type="button">
+          Próxima palavra
+        </button>
+      </div>
+    </div>
+
+    <div id="result-overlay" class="overlay" hidden>
+      <div
+        class="modal modal-wide"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="result-title"
+      >
+        <div id="result-icon" class="modal-icon" aria-hidden="true">🏁</div>
+        <h2 id="result-title">Partida concluída</h2>
+        <p id="result-text" class="modal-detail"></p>
+        <ul id="result-list" class="result-list"></ul>
+        <button id="play-again" class="btn btn-primary full" type="button">
+          Jogar de novo
+        </button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

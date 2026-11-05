@@ -1,0 +1,259 @@
+:root {
+  --bg: #f1f5f9;
+  --panel: #ffffff;
+  --panel-2: #f8fafc;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --brand: #2563eb;
+  --brand-ink: #ffffff;
+  --accent: #f59e0b;
+  --correct: #16a34a;
+  --shadow: 0 10px 30px rgb(15 23 42 / 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0b1120;
+  --panel: #111827;
+  --panel-2: #0f172a;
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --line: #1f2937;
+  --brand: #3b82f6;
+  --brand-ink: #ffffff;
+  --accent: #fbbf24;
+  --correct: #22c55e;
+  --shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: clamp(14px, 3vw, 26px);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+h1 {
+  margin: 4px 0 0;
+  font-size: clamp(22px, 4.6vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--brand);
+}
+
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-ink);
+}
+
+.btn.full {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.hud {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pill strong {
+  color: var(--ink);
+}
+
+.board {
+  position: relative;
+  height: min(58vh, 420px);
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.start-hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.target {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0 18%, var(--accent) 19% 40%, #ffffff 41% 52%, var(--brand) 53% 100%);
+  box-shadow: 0 6px 16px rgb(37 99 235 / 0.35);
+  cursor: pointer;
+  animation: pop 0.18s ease;
+}
+
+.target:active {
+  transform: scale(0.94);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bottom {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+code {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgb(2 6 23 / 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  width: min(360px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.35);
+}
+
+.modal-icon {
+  font-size: 40px;
+}
+
+.modal h2 {
+  margin: 8px 0 0;
+  font-size: 22px;
+}
+
+.modal p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (min-width: 700px) {
+  html.is-fullscreen .app,
+  html.is-standalone .app {
+    width: min(1000px, 100%);
+  }
+
+  html.is-fullscreen .board,
+  html.is-standalone .board {
+    height: min(68vh, 560px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Batalha de Canhões — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <span class="kicker">Matemática • Jogos VR</span>
+          <h1 id="title">Batalha de Canhões</h1>
+          <p class="subtitle">Resolva a conta para disparar com dano em dobro e use ângulo, força e vento a seu favor.</p>
+        </div>
+        <button id="restart" class="btn" type="button">Reiniciar</button>
+      </header>
+
+      <main>
+        <div class="hud">
+          <div class="hp hp-p1">
+            <span class="hp-name" id="name-p1">Jogador 1</span>
+            <div class="hp-bar"><div class="hp-fill" id="hp-p1"></div></div>
+            <span class="hp-num" id="hpnum-p1">100</span>
+          </div>
+
+          <div class="hud-center">
+            <span class="pill" id="wind">Vento: —</span>
+            <span class="pill" id="turn-label">—</span>
+            <span class="pill">Tempo: <strong id="timer">—</strong></span>
+          </div>
+
+          <div class="hp hp-p2">
+            <span class="hp-num" id="hpnum-p2">100</span>
+            <div class="hp-bar"><div class="hp-fill" id="hp-p2"></div></div>
+            <span class="hp-name" id="name-p2">Jogador 2</span>
+          </div>
+        </div>
+
+        <div class="board-wrap">
+          <canvas id="board" width="960" height="540" aria-label="Campo de batalha"></canvas>
+        </div>
+
+        <section id="question-box" class="panel" hidden>
+          <p class="panel-kicker">Desafio rápido — acerte a conta e seu tiro causa <strong>dano em dobro</strong></p>
+          <div class="question-row">
+            <span class="question" id="question-text">7 × 8</span>
+            <input id="question-answer" type="number" inputmode="numeric" placeholder="?" aria-label="Resposta" />
+            <button id="question-submit" class="btn btn-primary" type="button">Responder</button>
+          </div>
+          <p class="panel-feedback" id="question-feedback" hidden></p>
+          <div class="mini-timer"><div id="question-timerbar"></div></div>
+        </section>
+
+        <section id="controls" class="panel" hidden>
+          <div class="slider-row">
+            <label for="angle">Ângulo <strong id="angle-val">45°</strong></label>
+            <input id="angle" type="range" min="5" max="85" value="45" />
+          </div>
+          <div class="slider-row">
+            <label for="power">Força <strong id="power-val">60</strong></label>
+            <input id="power" type="range" min="20" max="100" value="60" />
+          </div>
+          <button id="fire" class="btn btn-primary full" type="button">🔥 Fogo!</button>
+        </section>
+      </main>
+
+      <footer class="bottom">
+        <p>Pratique operações e estimativas de trajetória parabólica enquanto diverte.</p>
+      </footer>
+    </div>
+
+    <div id="menu" class="overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+        <div class="modal-icon" aria-hidden="true">💥</div>
+        <h2 id="menu-title">Batalha de Canhões</h2>
+        <p>Acerte o desafio de matemática para atirar com dano em dobro. Cuidado com o vento — ele muda a cada turno!</p>
+        <button id="mode-pvp" class="btn btn-primary full" type="button">👥 Dois jogadores (mesma tela)</button>
+        <button id="mode-ai" class="btn full" type="button">🤖 Contra o computador</button>
+      </div>
+    </div>
+
+    <div id="result" class="overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div class="modal-icon" id="result-icon" aria-hidden="true">🏆</div>
+        <h2 id="result-title">Fim de jogo</h2>
+        <p id="result-text"></p>
+        <button id="play-again" class="btn btn-primary full" type="button">Jogar de novo</button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Capa de modelo de jogo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120" />
+      <stop offset="1" stop-color="#1e3a8a" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.07" />
+    </pattern>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)" />
+  <rect width="800" height="450" fill="url(#grid)" />
+  <circle cx="690" cy="60" r="150" fill="#3b82f6" opacity="0.2" />
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif">
+    <text x="56" y="72" fill="#93c5fd" font-size="15" font-weight="800" letter-spacing="4">JOGOS VR</text>
+
+    <g transform="translate(520 130)">
+      <circle cx="90" cy="90" r="86" fill="none" stroke="#334155" stroke-width="14" />
+      <circle cx="90" cy="90" r="56" fill="none" stroke="#f59e0b" stroke-width="14" />
+      <circle cx="90" cy="90" r="26" fill="#3b82f6" />
+      <circle cx="90" cy="90" r="8" fill="#ffffff" />
+    </g>
+
+    <text x="56" y="280" fill="#ffffff" font-size="54" font-weight="900" letter-spacing="-1.5">Seu jogo aqui</text>
+    <text x="58" y="320" fill="#bfdbfe" font-size="19" font-weight="600">Copie esta pasta, troque o conteúdo e entregue.</text>
+
+    <g transform="translate(58 352)">
+      <rect width="128" height="34" rx="17" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.2" />
+      <text x="64" y="22" fill="#e2e8f0" font-size="12" font-weight="700" text-anchor="middle">pasta-modelo</text>
+    </g>
+    <g transform="translate(198 352)">
+      <rect width="150" height="34" rx="17" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.2" />
+      <text x="75" y="22" fill="#e2e8f0" font-size="12" font-weight="700" text-anchor="middle">HTML + CSS + JS</text>
+    </g>
+  </g>
+</svg>

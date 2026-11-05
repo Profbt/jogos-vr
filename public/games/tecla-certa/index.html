@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Tecla Certa — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-key" aria-hidden="true">A</span>
+          <div>
+            <p class="brand-kicker">Jogos VR</p>
+            <h1 class="brand-name">Tecla Certa</h1>
+          </div>
+        </div>
+        <p class="topbar-status" id="topbar-status">10 temas · 4 níveis</p>
+      </header>
+
+      <main>
+        <div class="mobile-note" id="mobile-note" hidden>
+          <p>No celular, use o teclado do aparelho. A experiência completa é no computador.</p>
+          <button type="button" id="mobile-note-close" class="btn btn-ghost btn-small">Fechar</button>
+        </div>
+
+        <section class="screen" id="screen-start" aria-labelledby="start-title">
+          <div class="start-hero">
+            <p class="eyebrow">Digitação para o dia a dia</p>
+            <h2 class="hero-title" id="start-title">Aprenda a digitar<br /><em>sem olhar para as teclas.</em></h2>
+            <p class="lead">Escolha um dos 10 temas, acompanhe as cores dos dedos e complete quatro níveis. Leva de 4 a 6 minutos.</p>
+          </div>
+
+          <div class="theme-groups" id="theme-groups" aria-label="Temas disponíveis"></div>
+
+          <section class="how-panel" id="how-panel" aria-labelledby="how-title">
+            <div class="how-head">
+              <p class="eyebrow">Manual rápido</p>
+              <h3 id="how-title">Como jogar</h3>
+            </div>
+            <div class="how-layout">
+              <ol class="how-steps">
+                <li class="how-step">
+                  <span class="step-num" aria-hidden="true">1</span>
+                  <div>
+                    <h4>Escolha um tema</h4>
+                    <p>Cada tema tem quatro níveis: palavras curtas, palavras médias com acento, uma frase e um texto maior.</p>
+                  </div>
+                </li>
+                <li class="how-step">
+                  <span class="step-num" aria-hidden="true">2</span>
+                  <div>
+                    <h4>Digite o texto</h4>
+                    <p>A tecla acesa é a próxima. As cores mostram o dedo. Você não precisa apertar Shift.</p>
+                  </div>
+                </li>
+                <li class="how-step">
+                  <span class="step-num" aria-hidden="true">3</span>
+                  <div>
+                    <h4>Ganhe estrelas</h4>
+                    <p>Precisão e velocidade definem de uma a três estrelas por nível.</p>
+                  </div>
+                </li>
+              </ol>
+              <figure class="finger-map" aria-hidden="true">
+                <div class="mini-keyboard" id="mini-keyboard"></div>
+                <figcaption>A tecla acesa é a próxima. A cor mostra o dedo.</figcaption>
+              </figure>
+            </div>
+          </section>
+        </section>
+
+        <section class="screen" id="screen-intro" aria-labelledby="intro-theme" hidden>
+          <button type="button" class="link-back" id="intro-back">← Trocar tema</button>
+          <div class="intro-card">
+            <p class="eyebrow" id="intro-discipline">Geografia</p>
+            <h2 id="intro-theme">Biomas do Brasil</h2>
+            <p class="intro-level" id="intro-level">Nível 1 de 4</p>
+            <p class="intro-help" id="intro-help">Palavras curtas, com acentuação básica.</p>
+            <p class="intro-goals" id="intro-goals">3 estrelas: 95% de precisão</p>
+            <div class="intro-preview" id="intro-preview" aria-hidden="true"></div>
+            <button type="button" class="btn btn-primary" id="intro-start">Começar nível</button>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-play" aria-labelledby="play-theme" hidden>
+          <div class="play-head">
+            <div>
+              <p class="eyebrow" id="play-level">Nível 1 de 4</p>
+              <h2 id="play-theme">Biomas do Brasil</h2>
+            </div>
+            <div class="hud" role="group" aria-label="Placar">
+              <div class="hud-item"><span id="hud-ppm">0</span><small>PPM</small></div>
+              <div class="hud-item"><span id="hud-accuracy">100%</span><small>Precisão</small></div>
+              <div class="hud-item"><span id="hud-time">00:00</span><small>Tempo</small></div>
+            </div>
+          </div>
+
+          <div class="progress" aria-hidden="true">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+          <p class="progress-text" id="progress-text">0 de 0 caracteres</p>
+
+          <div class="play-stage" id="play-stage">
+            <div class="text-panel" id="text-panel">
+              <p class="text-display" id="text-display" aria-hidden="true"></p>
+              <p class="sr-only" id="sr-text"></p>
+            </div>
+            <div class="pause-overlay" id="pause-overlay" hidden>
+              <p>Digitação pausada.</p>
+              <button type="button" class="btn btn-primary" id="resume">Continuar digitando</button>
+            </div>
+          </div>
+
+          <div class="next-key" id="next-key" aria-live="polite"></div>
+          <div class="finger-legend" id="finger-legend" aria-hidden="true"></div>
+          <div class="keyboard" id="keyboard" aria-hidden="true"></div>
+          <p class="play-hint" id="play-hint">A tecla destacada é a próxima. A cor indica o dedo.</p>
+        </section>
+
+        <section class="screen" id="screen-level-result" aria-labelledby="level-result-title" hidden>
+          <div class="result-card">
+            <p class="eyebrow">Nível concluído</p>
+            <h2 id="level-result-title">Muito bem!</h2>
+            <div class="stars" id="level-result-stars" role="img" aria-label="Estrelas do nível"></div>
+            <p class="result-metrics" id="level-result-metrics"></p>
+            <button type="button" class="btn btn-primary" id="level-next">Próximo nível</button>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-final" aria-labelledby="final-title" hidden>
+          <div class="result-card final-card">
+            <p class="eyebrow">Partida concluída</p>
+            <h2 id="final-title">Seu resultado</h2>
+            <div class="stars stars-big" id="final-stars" role="img" aria-label="Total de estrelas"></div>
+            <table class="final-table" id="final-table">
+              <thead><tr><th>Nível</th><th>Estrelas</th><th>PPM</th><th>Precisão</th></tr></thead>
+              <tbody></tbody>
+            </table>
+            <div class="result-actions">
+              <button type="button" class="btn btn-primary" id="final-again">Jogar de novo</button>
+              <button type="button" class="btn" id="final-theme">Trocar tema</button>
+            </div>
+          </div>
+        </section>
+
+        <input
+          id="typing-input"
+          class="typing-input"
+          type="text"
+          tabindex="-1"
+          inputmode="text"
+          autocomplete="off"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-label="Digite o texto"
+        />
+        <p class="sr-only" id="live" aria-live="polite"></p>
+      </main>
+
+      <footer class="foot">
+        <p>Jogos VR · Colégio Estadual Vicente Rijo</p>
+        <p>Sem login. Sem coleta de dados.</p>
+      </footer>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

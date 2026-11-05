@@ -1,0 +1,18 @@
+{
+  "slug": "palavra-do-dia",
+  "title": "Palavra do Dia",
+  "author": "Equipe Jogos VR",
+  "authorClass": "Projeto de exemplo",
+  "discipline": "Português",
+  "grades": ["6º", "7º", "8º", "9º"],
+  "tags": ["palavras", "vocabulário", "ortografia", "lógica"],
+  "description": "Descubra a palavra de cinco letras em seis tentativas e acompanhe suas estatísticas.",
+  "instructions": "Digite uma palavra de cinco letras e envie. Verde significa posição certa; amarelo, letra presente em outra posição; cinza, letra ausente.",
+  "duration": 3,
+  "version": "1.0.0",
+  "entry": "index.html",
+  "cover": "cover.svg",
+  "featured": true,
+  "order": 2,
+  "createdAt": "2026-11-02"
+}

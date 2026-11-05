@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Qual é o País?</title>
+  <desc id="desc">Globo terrestre com países coloridos do vermelho ao azul, sobre papel com linhas de mapa. À esquerda, o título Qual é o País? e a frase Descubra pelo calor do globo.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf6ea"/>
+      <stop offset="1" stop-color="#efe4cc"/>
+    </linearGradient>
+    <radialGradient id="ocean" cx="42%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#2a8fb3"/>
+      <stop offset=".55" stop-color="#0b4c6e"/>
+      <stop offset="1" stop-color="#041a2b"/>
+    </radialGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b91c1c"/>
+      <stop offset=".22" stop-color="#c2410c"/>
+      <stop offset=".45" stop-color="#a16207"/>
+      <stop offset=".66" stop-color="#4d7c0f"/>
+      <stop offset=".84" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#paper)"/>
+  <g opacity=".32" stroke="#cbbfa8" stroke-width="1.4">
+    <path d="M0 80h1280M0 160h1280M0 240h1280M0 320h1280M0 400h1280M0 480h1280M0 560h1280M0 640h1280"/>
+    <path d="M80 0v720M160 0v720M240 0v720M320 0v720M400 0v720M480 0v720M560 0v720M640 0v720M720 0v720M800 0v720M880 0v720M960 0v720M1040 0v720M1120 0v720M1200 0v720"/>
+  </g>
+
+  <g transform="translate(80 110)">
+    <text font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="700" letter-spacing="5" fill="#0f766e">JOGOS VR · GEOGRAFIA</text>
+    <text y="98" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-weight="700" letter-spacing="-3" fill="#14243a">QUAL É O</text>
+    <text y="204" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-weight="700" letter-spacing="-3" fill="#b45309">PAÍS?</text>
+    <text y="274" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="28" fill="#5b6473">Descubra pelo calor do globo.</text>
+    <text y="316" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="19" fill="#5b6473">Digite um país. Vermelho é perto, azul é longe.</text>
+
+    <g transform="translate(0 356)">
+      <rect width="430" height="16" rx="8" fill="url(#heat)"/>
+      <text x="0" y="48" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="#5b6473">QUENTE</text>
+      <text x="430" y="48" text-anchor="end" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="#5b6473">FRIO</text>
+    </g>
+
+    <g transform="translate(0 486)">
+      <rect width="196" height="42" rx="21" fill="#14243a"/>
+      <text x="98" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#fbf6ea">6º AO 9º ANO</text>
+      <rect x="212" width="196" height="42" rx="21" fill="none" stroke="#14243a" stroke-width="2"/>
+      <text x="310" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#14243a">3 NÍVEIS</text>
+    </g>
+  </g>
+
+  <g transform="translate(900 350)" filter="url(#glow)">
+    <circle r="250" fill="url(#ocean)"/>
+    <g fill="none" stroke="#9ad7ee" stroke-opacity=".22" stroke-width="2">
+      <ellipse rx="250" ry="250"/>
+      <ellipse rx="250" ry="150"/>
+      <ellipse rx="250" ry="62"/>
+      <ellipse rx="150" ry="250"/>
+      <ellipse rx="62" ry="250"/>
+    </g>
+    <g fill="#3f8f73" stroke="#9fe3c3" stroke-opacity=".55" stroke-width="2">
+      <path d="M-178 -80c42-38 94-46 130-22 26 18 14 47-12 63-30 19-77 24-104 8-23-14-30-32-14-49z"/>
+      <path d="M-70 10c24-19 63-16 78 8 15 25-4 55-30 63-30 9-62-8-64-31-1-15 4-29 16-40z"/>
+      <path d="M22 -118c34-15 79-8 94 19 12 22-3 44-32 48-31 4-69-7-78-27-7-16 1-31 16-40z"/>
+      <path d="M48 32c42-10 94 6 112 36 18 31-8 63-45 68-42 5-83-13-92-45-7-24 3-51 25-59z"/>
+      <path d="M112 122c27-5 53 7 58 27 5 19-13 36-36 36-22 0-41-14-42-32-1-14 7-27 20-31z"/>
+      <path d="M-212 96c25-8 55 4 60 23 4 17-12 30-32 31-20 0-39-11-42-26-2-12 4-23 14-28z"/>
+    </g>
+    <g fill="#b91c1c" stroke="#fecaca" stroke-width="3">
+      <circle cx="70" cy="-20" r="9"/>
+      <circle cx="132" cy="60" r="6" fill="#c2410c"/>
+      <circle cx="-30" cy="-55" r="5" fill="#a16207"/>
+    </g>
+    <path d="M70 -20c55 35 96 75 118 130" fill="none" stroke="#fca5a5" stroke-opacity=".75" stroke-width="4" stroke-dasharray="10 12"/>
+    <text x="0" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#f6f0e4" stroke="#041a2b" stroke-width="1">?</text>
+  </g>
+
+  <g transform="translate(760 630)">
+    <rect x="0" y="0" width="440" height="4" rx="2" fill="#d9cdb8"/>
+  </g>
+</svg>

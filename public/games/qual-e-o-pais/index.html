@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f0e4" />
+    <title>Qual é o País? — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">?</span>
+          <div>
+            <p class="brand-kicker">Jogos VR</p>
+            <h1 class="brand-name">Qual é o País?</h1>
+          </div>
+        </div>
+        <p class="topbar-status" id="topbar-status">Geografia · mundo</p>
+      </header>
+
+      <main>
+        <section class="screen" id="screen-start" aria-labelledby="start-title">
+          <div class="start-hero">
+            <p class="eyebrow">Geografia · 6º ao 9º</p>
+            <h2 class="hero-title" id="start-title">
+              Descubra o país<br /><em>pelo calor do globo.</em>
+            </h2>
+            <p class="lead">
+              Digite um país. O globo acende na cor da distância: vermelho é perto,
+              azul é longe. Acerte com o menor número de chutes.
+            </p>
+          </div>
+
+          <div class="mode-grid">
+            <button type="button" class="mode-card" id="play-daily">
+              <span class="mode-icon" aria-hidden="true">☀</span>
+              <span class="mode-copy">
+                <span class="mode-title">País do dia</span>
+                <span class="mode-text">Um país novo por dia. Volte amanhã para outro.</span>
+              </span>
+              <span class="mode-go">Jogar →</span>
+            </button>
+            <button type="button" class="mode-card" id="play-free">
+              <span class="mode-icon" aria-hidden="true">∞</span>
+              <span class="mode-copy">
+                <span class="mode-title">Modo livre</span>
+                <span class="mode-text">Um país aleatório para treinar quantas vezes quiser.</span>
+              </span>
+              <span class="mode-go">Jogar →</span>
+            </button>
+          </div>
+
+          <p class="stats-line" id="stats-line" hidden></p>
+
+          <section class="how-panel" aria-labelledby="how-title">
+            <div class="how-head">
+              <p class="eyebrow">Manual rápido</p>
+              <h3 id="how-title">Como jogar</h3>
+            </div>
+            <ol class="how-steps">
+              <li class="how-step">
+                <span class="step-num" aria-hidden="true">1</span>
+                <div>
+                  <h4>Digite um país</h4>
+                  <p>Use o autocomplete. Pode chutar quantas vezes quiser.</p>
+                </div>
+              </li>
+              <li class="how-step">
+                <span class="step-num" aria-hidden="true">2</span>
+                <div>
+                  <h4>Leia o calor</h4>
+                  <p>O globo colore o país chutado e mostra a distância em km até o alvo. Países pequenos aparecem como pontos. Depois de 3 chutes, uma pista ajuda.</p>
+                </div>
+              </li>
+              <li class="how-step">
+                <span class="step-num" aria-hidden="true">3</span>
+                <div>
+                  <h4>Acerte</h4>
+                  <p>Até 4 chutes valem 3 estrelas. Até 6 valem 2. Depois, 1. Desistir zera as estrelas.</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section class="screen" id="screen-game" aria-labelledby="game-title" hidden>
+          <div class="game-head">
+            <div>
+              <p class="eyebrow" id="mode-label">País do dia</p>
+              <h2 id="game-title">Qual é o país?</h2>
+            </div>
+            <div class="game-actions">
+              <button type="button" class="btn btn-ghost btn-small" id="give-up">Desistir</button>
+              <button type="button" class="btn btn-ghost btn-small" id="back">← Voltar</button>
+            </div>
+          </div>
+
+          <div class="game-layout">
+            <section class="globe-panel" aria-label="Globo de distâncias">
+              <div class="globe-wrap">
+                <canvas id="globe" aria-hidden="true"></canvas>
+                <div class="globe-glow" aria-hidden="true"></div>
+              </div>
+              <div class="globe-tools">
+                <button type="button" class="tool" id="zoom-out" aria-label="Diminuir o globo">−</button>
+                <button type="button" class="tool" id="zoom-in" aria-label="Aumentar o globo">+</button>
+                <button type="button" class="tool tool-wide" id="focus-last">Centralizar no último chute</button>
+              </div>
+              <p class="globe-hint">Arraste para girar e use + ou − para aproximar. A cor mostra a distância até o país secreto.</p>
+              <div class="legend" aria-hidden="true">
+                <span>Quente</span>
+                <span class="legend-bar"></span>
+                <span>Frio</span>
+              </div>
+            </section>
+
+            <aside class="guess-panel" aria-label="Seus chutes">
+              <div class="guess-box">
+                <label for="guess-input">Digite um país</label>
+                <div class="input-row">
+                  <input
+                    id="guess-input"
+                    type="text"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-controls="suggestions"
+                    aria-autocomplete="list"
+                    placeholder="Ex.: Brasil, Japão, Canadá"
+                  />
+                  <button type="button" class="btn btn-primary" id="guess-submit">Chutar</button>
+                </div>
+                <ul class="suggestions" id="suggestions" role="listbox" aria-label="Sugestões de países" hidden></ul>
+                <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+              </div>
+
+              <div class="guess-list-wrap">
+                <div class="guess-list-head">
+                  <h3>Seus chutes</h3>
+                  <span id="guess-count">0</span>
+                </div>
+                <ol class="guess-list" id="guess-list"></ol>
+                <p class="empty-list" id="empty-list">
+                  Nenhum chute ainda. Comece por um país que você conhece.
+                </p>
+              </div>
+
+              <div class="target-hint" id="target-hint" hidden>
+                <p class="eyebrow">País secreto</p>
+                <h3 id="target-name"></h3>
+                <p id="target-fact"></p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-result" aria-labelledby="result-title" hidden>
+          <div class="result-card">
+            <p class="eyebrow" id="result-eyebrow">Partida concluída</p>
+            <h2 id="result-title">Você acertou!</h2>
+            <div class="stars" id="result-stars" role="img" aria-label="Estrelas da partida"></div>
+            <p class="result-text" id="result-text"></p>
+            <div class="result-actions">
+              <button type="button" class="btn btn-primary" id="play-again">Jogar de novo</button>
+              <button type="button" class="btn" id="result-menu">Trocar modo</button>
+            </div>
+          </div>
+        </section>
+
+        <p class="sr-only" id="live" aria-live="polite"></p>
+      </main>
+
+      <footer class="foot">
+        <p>Jogos VR · Colégio Estadual Vicente Rijo</p>
+        <p>Sem login. Sem coleta de dados.</p>
+      </footer>
+    </div>
+
+    <script src="world-data.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>

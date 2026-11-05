@@ -1,0 +1,16 @@
+{
+  "slug": "forca-com-dicas",
+  "title": "Forca com Dicas",
+  "author": "Equipe Jogos VR",
+  "authorClass": "Projeto de exemplo",
+  "discipline": "Português",
+  "grades": ["6º", "7º", "8º", "9º"],
+  "tags": ["forca", "vocabulário", "inglês", "ortografia", "classes gramaticais", "níveis"],
+  "description": "Jogo de forca em português ou inglês, com três níveis de dificuldade e dicas de classe gramatical e significado.",
+  "instructions": "Escolha o idioma, leia a dica e complete as cinco palavras de cada nível. As vidas caem de seis para cinco e quatro; no fim, veja o placar.",
+  "duration": 8,
+  "version": "2.4.0",
+  "entry": "index.html",
+  "cover": "cover.svg",
+  "createdAt": "2026-11-04"
+}

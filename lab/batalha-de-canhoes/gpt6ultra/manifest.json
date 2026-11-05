@@ -1,0 +1,25 @@
+{
+  "slug": "batalha-de-canhoes",
+  "title": "Batalha de Canhões",
+  "author": "Seu nome",
+  "authorClass": "Sua turma",
+  "discipline": "Matemática",
+  "grades": [
+    "6º",
+    "7º"
+  ],
+  "tags": [
+    "artilharia",
+    "trajetória",
+    "operações",
+    "ângulos",
+    "estratégia"
+  ],
+  "description": "Duelo de canhões com matemática, mira por arraste, terreno destrutível e três dificuldades. Resolva contas para ganhar energia e reforçar seu disparo.",
+  "instructions": "Escolha o modo, a dificuldade da batalha e o nível das contas. Acertos dão 50% de dano extra e 1 energia. Depois, arraste no campo ou ajuste ângulo e força para disparar. Normal é grátis, Triplo custa 1 energia e Mega custa 2. Use o treino para jogar sem cronômetro.",
+  "duration": 10,
+  "version": "3.0.0",
+  "entry": "index.html",
+  "cover": "cover.svg",
+  "createdAt": "2026-11-03"
+}

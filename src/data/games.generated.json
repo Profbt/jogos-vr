@@ -1,0 +1,188 @@
+[
+  {
+    "slug": "caca-palavras",
+    "title": "Caça-Palavras",
+    "author": "Equipe Jogos VR",
+    "authorClass": "Projeto de exemplo",
+    "discipline": "Geografia",
+    "grades": [
+      "6º",
+      "7º",
+      "8º",
+      "9º"
+    ],
+    "tags": [
+      "palavras",
+      "vocabulário",
+      "biomas",
+      "ciências"
+    ],
+    "description": "Encontre palavras escondidas na grade e descubra o significado de cada uma pelas dicas.",
+    "instructions": "Escolha um tema, clique na primeira e na última letra de cada palavra (na horizontal, na vertical ou na diagonal) e leia a dica para entender o conceito.",
+    "duration": 5,
+    "version": "1.0.0",
+    "entry": "index.html",
+    "entryUrl": "/games/caca-palavras/index.html",
+    "coverUrl": "/games/caca-palavras/cover.svg",
+    "featured": true,
+    "order": 1,
+    "createdAt": "2026-11-02"
+  },
+  {
+    "slug": "palavra-do-dia",
+    "title": "Palavra do Dia",
+    "author": "Equipe Jogos VR",
+    "authorClass": "Projeto de exemplo",
+    "discipline": "Português",
+    "grades": [
+      "6º",
+      "7º",
+      "8º",
+      "9º"
+    ],
+    "tags": [
+      "palavras",
+      "vocabulário",
+      "ortografia",
+      "lógica"
+    ],
+    "description": "Descubra a palavra de cinco letras em seis tentativas e acompanhe suas estatísticas.",
+    "instructions": "Digite uma palavra de cinco letras e envie. Verde significa posição certa; amarelo, letra presente em outra posição; cinza, letra ausente.",
+    "duration": 3,
+    "version": "1.0.0",
+    "entry": "index.html",
+    "entryUrl": "/games/palavra-do-dia/index.html",
+    "coverUrl": "/games/palavra-do-dia/cover.svg",
+    "featured": true,
+    "order": 2,
+    "createdAt": "2026-11-02"
+  },
+  {
+    "slug": "tecla-certa",
+    "title": "Tecla Certa",
+    "author": "Equipe Jogos VR",
+    "authorClass": "Projeto de exemplo",
+    "discipline": "Interdisciplinar",
+    "grades": [
+      "6º",
+      "7º",
+      "8º",
+      "9º"
+    ],
+    "tags": [
+      "digitação",
+      "teclado",
+      "velocidade",
+      "precisão",
+      "português",
+      "matemática",
+      "ciências",
+      "história",
+      "geografia",
+      "arte",
+      "inglês",
+      "tecnologia"
+    ],
+    "description": "Pratique digitação com palavras e frases de dez temas, em quatro níveis de dificuldade.",
+    "instructions": "Escolha um tema e digite o texto na tela. As cores do teclado mostram qual dedo usar. Nos níveis 1 e 2, corrija a letra errada para avançar; nos níveis 3 e 4, o erro conta na precisão.",
+    "duration": 6,
+    "version": "1.0.0",
+    "entry": "index.html",
+    "entryUrl": "/games/tecla-certa/index.html",
+    "coverUrl": "/games/tecla-certa/cover.svg",
+    "featured": true,
+    "order": 3,
+    "createdAt": "2026-11-03"
+  },
+  {
+    "slug": "batalha-de-canhoes",
+    "title": "Batalha de Canhões",
+    "author": "Equipe Jogos VR",
+    "authorClass": "Projeto de exemplo",
+    "discipline": "Matemática",
+    "grades": [
+      "6º",
+      "7º"
+    ],
+    "tags": [
+      "artilharia",
+      "trajetória",
+      "operações",
+      "ângulos",
+      "estratégia"
+    ],
+    "description": "Duelo de canhões por turnos: resolva operações matemáticas para atirar com dano em dobro e acertar o canhão adversário.",
+    "instructions": "A cada turno, responda ao desafio de matemática para ganhar dano em dobro. Depois ajuste o ângulo e a força do canhão, atire e desvie do vento. Vença um amigo no mesmo aparelho ou desafie o computador.",
+    "duration": 10,
+    "version": "2.0.0",
+    "entry": "index.html",
+    "entryUrl": "/games/batalha-de-canhoes/index.html",
+    "coverUrl": "/games/batalha-de-canhoes/cover.svg",
+    "featured": true,
+    "order": 4,
+    "createdAt": "2026-11-03"
+  },
+  {
+    "slug": "qual-e-o-pais",
+    "title": "Qual é o País?",
+    "author": "Equipe Jogos VR",
+    "authorClass": "Projeto de exemplo",
+    "discipline": "Geografia",
+    "grades": [
+      "6º",
+      "7º",
+      "8º",
+      "9º"
+    ],
+    "tags": [
+      "geografia",
+      "países",
+      "mapa",
+      "globo",
+      "distância",
+      "quiz",
+      "território"
+    ],
+    "description": "Descubra o país secreto pelo calor do globo: cada chute acende uma cor e revela a distância.",
+    "instructions": "Digite um país e use o autocomplete. O globo colore o país do chute: vermelho é perto, azul é longe. Acerte em até 4 chutes para ganhar 3 estrelas.",
+    "duration": 5,
+    "version": "1.0.0",
+    "entry": "index.html",
+    "entryUrl": "/games/qual-e-o-pais/index.html",
+    "coverUrl": "/games/qual-e-o-pais/cover.svg",
+    "featured": true,
+    "order": 4,
+    "createdAt": "2026-11-03"
+  },
+  {
+    "slug": "forca-com-dicas",
+    "title": "Forca com Dicas",
+    "author": "Equipe Jogos VR",
+    "authorClass": "Projeto de exemplo",
+    "discipline": "Português",
+    "grades": [
+      "6º",
+      "7º",
+      "8º",
+      "9º"
+    ],
+    "tags": [
+      "forca",
+      "vocabulário",
+      "inglês",
+      "ortografia",
+      "classes gramaticais",
+      "níveis"
+    ],
+    "description": "Jogo de forca em português ou inglês, com três níveis de dificuldade e dicas de classe gramatical e significado.",
+    "instructions": "Escolha o idioma, leia a dica e complete as cinco palavras de cada nível. As vidas caem de seis para cinco e quatro; no fim, veja o placar.",
+    "duration": 8,
+    "version": "2.4.0",
+    "entry": "index.html",
+    "entryUrl": "/games/forca-com-dicas/index.html",
+    "coverUrl": "/games/forca-com-dicas/cover.svg",
+    "featured": false,
+    "order": 0,
+    "createdAt": "2026-11-04"
+  }
+]

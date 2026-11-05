@@ -1,0 +1,16 @@
+{
+  "slug": "meu-jogo",
+  "title": "Nome do meu jogo",
+  "author": "Seu nome",
+  "authorClass": "Sua turma",
+  "discipline": "Matemática",
+  "grades": ["6º", "7º"],
+  "tags": ["palavra-chave", "outra-palavra"],
+  "description": "Uma frase curta que explica o que o jogo ensina.",
+  "instructions": "Como jogar, em uma ou duas frases.",
+  "duration": 5,
+  "version": "1.0.0",
+  "entry": "index.html",
+  "cover": "cover.svg",
+  "createdAt": "2026-11-02"
+}

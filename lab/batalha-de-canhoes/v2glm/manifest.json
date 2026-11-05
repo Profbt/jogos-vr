@@ -1,0 +1,16 @@
+{
+  "slug": "batalha-de-canhoes",
+  "title": "Batalha de Canhões",
+  "author": "Seu nome",
+  "authorClass": "Sua turma",
+  "discipline": "Matemática",
+  "grades": ["6º", "7º"],
+  "tags": ["artilharia", "trajetória", "operações", "ângulos", "estratégia", "armas especiais"],
+  "description": "Duelo de canhões em turnos com armas especiais: resolva operações matemáticas para desbloquear mísseis teleguiados, bombas de fragmentação, tiro triplo e escudo. Ajuste ângulo e força, domine o vento e vença o rival.",
+  "instructions": "A cada turno, responda ao desafio de matemática para ganhar dano em dobro. Cada acerto aumenta sua sequência e desbloqueia armas especiais. Escolha sua arma, ajuste o ângulo e a força, e dispare! Cuidado com o vento, que muda a cada turno.",
+  "duration": 10,
+  "version": "2.0.0",
+  "entry": "index.html",
+  "cover": "cover.svg",
+  "createdAt": "2026-11-04"
+}

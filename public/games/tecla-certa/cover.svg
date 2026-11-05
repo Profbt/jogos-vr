@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Tecla Certa</title>
+  <desc id="desc">Máquina de escrever sobre papel, com teclas coloridas e o nome Tecla Certa.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf6ea"/>
+      <stop offset="1" stop-color="#efe4cc"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#f7f1e3"/>
+  <g opacity=".25" stroke="#d8cdb8" stroke-width="2">
+    <path d="M0 90h1280M0 180h1280M0 270h1280M0 360h1280M0 450h1280M0 540h1280M0 630h1280"/>
+  </g>
+  <g transform="rotate(-2 640 360)">
+    <rect x="300" y="80" width="680" height="340" rx="12" fill="url(#paper)" stroke="#d8cdb8" stroke-width="4"/>
+    <text x="640" y="215" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="#1f2937" letter-spacing="4">TECLA</text>
+    <text x="640" y="300" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="#b91c1c" letter-spacing="4">CERTA</text>
+    <text x="640" y="355" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="24" fill="#6b7280" letter-spacing="3">JOGOS VR · DIGITAÇÃO</text>
+  </g>
+  <g>
+    <rect x="240" y="430" width="800" height="210" rx="28" fill="url(#body)"/>
+    <rect x="285" y="455" width="710" height="56" rx="10" fill="#0f172a"/>
+    <g fill="#f7f1e3">
+      <rect x="310" y="530" width="54" height="46" rx="8"/>
+      <rect x="374" y="530" width="54" height="46" rx="8"/>
+      <rect x="438" y="530" width="54" height="46" rx="8"/>
+      <rect x="502" y="530" width="54" height="46" rx="8"/>
+      <rect x="566" y="530" width="54" height="46" rx="8"/>
+      <rect x="630" y="530" width="54" height="46" rx="8"/>
+      <rect x="694" y="530" width="54" height="46" rx="8"/>
+      <rect x="758" y="530" width="54" height="46" rx="8"/>
+      <rect x="822" y="530" width="54" height="46" rx="8"/>
+      <rect x="886" y="530" width="54" height="46" rx="8"/>
+    </g>
+    <g>
+      <rect x="330" y="588" width="54" height="40" rx="7" fill="#f59e0b"/>
+      <rect x="394" y="588" width="54" height="40" rx="7" fill="#10b981"/>
+      <rect x="458" y="588" width="54" height="40" rx="7" fill="#3b82f6"/>
+      <rect x="522" y="588" width="54" height="40" rx="7" fill="#8b5cf6"/>
+      <rect x="586" y="588" width="300" height="40" rx="7" fill="#e5e7eb"/>
+      <rect x="896" y="588" width="54" height="40" rx="7" fill="#ec4899"/>
+    </g>
+    <rect x="240" y="640" width="800" height="14" rx="7" fill="#0f172a" opacity=".55"/>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="30" fill="#b91c1c" opacity=".8">
+    <text x="120" y="200">A</text>
+    <text x="1090" y="170">Ç</text>
+    <text x="160" y="380">Ã</text>
+    <text x="1090" y="390">É</text>
+  </g>
+</svg>

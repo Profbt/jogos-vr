@@ -1,0 +1,16 @@
+{
+  "slug": "batalha-de-canhoes",
+  "title": "Batalha de Canhões",
+  "author": "Seu nome",
+  "authorClass": "Sua turma",
+  "discipline": "Matemática",
+  "grades": ["6º", "7º"],
+  "tags": ["artilharia", "trajetória", "operações", "ângulos", "estratégia"],
+  "description": "Duelo de canhões por turnos: resolva operações matemáticas para atirar com dano em dobro e acertar o canhão adversário.",
+  "instructions": "A cada turno, responda ao desafio de matemática para ganhar dano em dobro. Depois ajuste o ângulo e a força do canhão, atire e desvie do vento. Vença um amigo no mesmo aparelho ou desafie o computador.",
+  "duration": 10,
+  "version": "1.0.0",
+  "entry": "index.html",
+  "cover": "cover.svg",
+  "createdAt": "2026-11-03"
+}

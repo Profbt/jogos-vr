@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Forca com Dicas — Jogos VR</title>
+    <style>
+      :root {
+        --bg: #dfe6ff; --panel: #ffffff; --ink: #151a3d; --muted: #4a5488;
+        --line: #c9d2ff; --edge: #151a3d; --dots: #b9c4ff;
+        --brand: #3347e8; --brand-ink: #ffffff; --accent: #ff5c8a;
+      }
+      [data-theme="dark"] {
+        --bg: #0e1230; --panel: #1a2150; --ink: #f4f6ff; --muted: #b4bcf0;
+        --line: #333d85; --edge: #04061a; --dots: #1b2260;
+        --brand: #7d8dff; --brand-ink: #0e1230; --accent: #ff7aa2;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 30px 20px 34px;
+        font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+        background-color: var(--bg);
+        background-image: radial-gradient(var(--dots) 1.6px, transparent 1.8px);
+        background-size: 22px 22px;
+        background-attachment: fixed;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+      .home { max-width: 680px; margin: 0 auto; text-align: center; }
+      html.is-fullscreen body { min-height: 100dvh; display: flex; flex-direction: column; }
+      html.is-fullscreen .home { margin-block: auto; }
+      .kicker {
+        display: inline-block; font-size: 11px; font-weight: 800;
+        letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand);
+      }
+      h1 { margin: 6px 0 6px; font-size: clamp(26px, 5.5vw, 38px); line-height: 1.08; letter-spacing: -0.02em; }
+      .subtitle { margin: 0 0 24px; color: var(--muted); font-size: 14px; font-weight: 600; }
+      .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      @media (max-width: 520px) { .choices { grid-template-columns: 1fr; } }
+      .choice {
+        display: flex; flex-direction: column; align-items: center; gap: 8px;
+        padding: 24px 16px; border: 3px solid var(--edge); border-radius: 16px;
+        background: var(--panel); color: var(--ink); text-decoration: none;
+        box-shadow: 0 6px 0 var(--edge);
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      .choice:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--edge); }
+      .choice:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--edge); }
+      .choice:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+      .flag { width: 44px; height: 30px; display: block; }
+      .lang { font-size: 19px; font-weight: 900; }
+      .desc { font-size: 12px; color: var(--muted); font-weight: 600; }
+      .foot { margin: 22px 0 0; color: var(--muted); font-size: 12px; font-weight: 600; }
+      @media (prefers-reduced-motion: reduce) {
+        .choice { transition: none; }
+        .choice:hover, .choice:active { transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="home">
+      <span class="kicker">Jogos VR</span>
+      <h1>Forca com Dicas</h1>
+      <p class="subtitle">Escolha o idioma para jogar. / Choose the language to play.</p>
+
+      <div class="choices">
+        <a class="choice" href="pt/index.html" hreflang="pt-BR" aria-label="Jogar em português">
+          <svg class="flag" viewBox="0 0 28 20" aria-hidden="true" focusable="false">
+            <rect width="28" height="20" fill="#009c3b" />
+            <path d="M14 2.6 25.4 10 14 17.4 2.6 10Z" fill="#ffdf00" />
+            <circle cx="14" cy="10" r="4.4" fill="#002776" />
+            <path d="M9.8 9.2c2.8-1.1 5.6-1.1 8.4 0" stroke="#fff" stroke-width="1.2" fill="none" />
+          </svg>
+          <span class="lang">Português</span>
+          <span class="desc">Vocabulário em português</span>
+        </a>
+
+        <a class="choice" href="en/index.html" hreflang="en" aria-label="Jogar em inglês">
+          <svg class="flag" viewBox="0 0 28 20" aria-hidden="true" focusable="false">
+            <rect width="28" height="20" fill="#012169" />
+            <path d="M0 0 28 20M28 0 0 20" stroke="#fff" stroke-width="4" />
+            <path d="M0 0 28 20M28 0 0 20" stroke="#c8102e" stroke-width="1.8" />
+            <path d="M14 0v20M0 10h28" stroke="#fff" stroke-width="6" />
+            <path d="M14 0v20M0 10h28" stroke="#c8102e" stroke-width="3.4" />
+          </svg>
+          <span class="lang">English</span>
+          <span class="desc">English vocabulary</span>
+        </a>
+      </div>
+
+      <p class="foot">3 níveis · 5 palavras por nível · até 300 pontos</p>
+    </main>
+
+    <script>
+      (function () {
+        function applyTheme(theme) {
+          if (theme === "dark" || theme === "light") {
+            document.documentElement.dataset.theme = theme;
+          }
+        }
+
+        function preferredTheme() {
+          try {
+            var fromQuery = new URLSearchParams(window.location.search).get("theme");
+            if (fromQuery === "dark" || fromQuery === "light") return fromQuery;
+            var saved = window.localStorage.getItem("theme");
+            if (saved === "dark" || saved === "light") return saved;
+          } catch (e) {}
+          return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        function inPortal() {
+          try { return window.self !== window.top; } catch (e) { return false; }
+        }
+
+        var lastHeight = 0;
+        function reportHeight() {
+          if (!inPortal()) return;
+          if (document.documentElement.classList.contains("is-fullscreen")) return;
+          var height = Math.ceil(document.documentElement.scrollHeight);
+          if (Math.abs(height - lastHeight) < 4) return;
+          lastHeight = height;
+          window.parent.postMessage({ type: "vrgame:resize", height: height }, "*");
+        }
+
+        function ready() {
+          if (!inPortal()) return;
+          window.parent.postMessage({ type: "vrgame:ready" }, "*");
+          reportHeight();
+        }
+
+        applyTheme(preferredTheme());
+
+        window.addEventListener("message", function (event) {
+          var data = event.data;
+          if (!data || typeof data !== "object") return;
+          if (data.type === "vrgame:theme") applyTheme(data.theme);
+          if (data.type === "vrgame:fullscreen") {
+            document.documentElement.classList.toggle("is-fullscreen", Boolean(data.fullscreen));
+          }
+        });
+
+        if (document.readyState === "complete") ready();
+        else window.addEventListener("load", ready);
+
+        if ("ResizeObserver" in window) {
+          new ResizeObserver(reportHeight).observe(document.body);
+        }
+        window.addEventListener("resize", reportHeight);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Caça-Palavras — Jogos VR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="brand">
+          <span class="kicker">Caça-palavras</span>
+          <h1 id="puzzle-title">Biomas do Brasil</h1>
+          <p id="puzzle-subtitle" class="subtitle">Geografia · 6º e 7º ano</p>
+        </div>
+
+        <div class="controls">
+          <label class="select-label" for="puzzle-select">Tema</label>
+          <select id="puzzle-select" class="select"></select>
+          <button id="restart" class="btn" type="button">Reiniciar</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="board-panel" aria-labelledby="board-title">
+          <h2 id="board-title" class="sr-only">Grade de letras</h2>
+          <div class="hud">
+            <span id="progress" class="pill">0 de 0 palavras</span>
+            <span id="timer" class="pill">00:00</span>
+          </div>
+          <div id="grid" class="grid" role="grid" aria-label="Grade do caça-palavras"></div>
+          <p class="hint">
+            Clique na primeira e na última letra (no celular, toque nas duas
+            pontas). As palavras podem estar na horizontal, na vertical ou na
+            diagonal.
+          </p>
+        </section>
+
+        <aside class="clues" aria-labelledby="clues-title">
+          <div class="clues-head">
+            <h2 id="clues-title">Palavras</h2>
+            <span id="clues-count" class="muted">0/0</span>
+          </div>
+          <ul id="word-list" class="word-list"></ul>
+        </aside>
+      </main>
+    </div>
+
+    <div id="win" class="overlay" hidden>
+      <div class="win-card" role="dialog" aria-modal="true" aria-labelledby="win-title">
+        <div class="win-icon" aria-hidden="true">🏆</div>
+        <h2 id="win-title">Tema concluído!</h2>
+        <p id="win-text">Você encontrou todas as palavras.</p>
+        <div class="win-stats">
+          <div><span id="win-time">00:00</span><small>Tempo</small></div>
+          <div><span id="win-words">0</span><small>Palavras</small></div>
+        </div>
+        <div class="win-actions">
+          <button id="play-again" class="btn btn-primary" type="button">Jogar de novo</button>
+          <button id="next-theme" class="btn" type="button">Próximo tema</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

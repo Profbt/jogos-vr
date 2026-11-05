@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#163c42">
+  <meta name="description" content="Um duelo de canhões em que matemática, pontaria e estratégia jogam juntas.">
+  <title>Batalha de Canhões — Jogos VR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M11 4 5 9H2v6h3l6 5V4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-restart" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 0 1 5 .5c0 2-2.5 2-2.5 4m0 3v.1"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m14 2-9 12h6l-1 8 9-12h-6l1-8Z"/></symbol>
+  </defs></svg>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="wordmark">
+        <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m14 27 19-16 7 8-19 16Z" fill="currentColor"/><path d="M9 34h29v6H9z" fill="currentColor"/><circle cx="13" cy="38" r="6" fill="#ffb065" stroke="#163c42" stroke-width="3"/><circle cx="33" cy="38" r="6" fill="#ffb065" stroke="#163c42" stroke-width="3"/><path d="m37 7 3-4m4 10 4-1" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
+        <span><span class="eyebrow">JOGOS VR <span class="eyebrow-dot">/</span> MATEMÁTICA</span><h1>Batalha de Canhões<span class="edition">3</span></h1><span class="tagline">Acerte a conta. Ajuste a mira. Faça história.</span></span>
+      </div>
+      <nav class="toolbar" aria-label="Opções do jogo">
+        <button class="icon-btn" id="mute" type="button" aria-label="Ativar ou silenciar o som" title="Som (M)"><svg class="icon"><use href="#i-sound"/></svg></button>
+        <button class="icon-btn" id="effects" type="button" aria-label="Reduzir efeitos visuais" title="Reduzir efeitos visuais" aria-pressed="false"><svg class="icon"><use href="#i-spark"/></svg></button>
+        <button class="icon-btn" id="help" type="button" aria-label="Abrir tutorial" title="Como jogar"><svg class="icon"><use href="#i-help"/></svg></button>
+        <span class="toolbar-rule" aria-hidden="true"></span>
+        <button class="icon-btn" id="pause" type="button" aria-label="Pausar partida" title="Pausar (P)"><svg class="icon"><use href="#i-pause"/></svg></button>
+        <button class="icon-btn" id="restart" type="button" aria-label="Abrir opções para voltar ao menu" title="Opções da partida"><svg class="icon"><use href="#i-restart"/></svg></button>
+      </nav>
+    </header>
+
+    <main class="game-layout">
+      <section class="arena" aria-label="Arena de batalha">
+        <div class="scoreboard">
+          <div class="player-card player-one is-active" id="card-p1">
+            <div class="player-heading"><span class="player-marker" aria-hidden="true">01</span><span class="player-name" id="name-p1">Jogador 1</span><span class="charge" id="charge-p1" title="Cargas de energia">0 / 2</span></div>
+            <div class="health-row"><div class="health-track"><div class="health-fill" id="hp-p1"></div></div><span class="health-number" id="hpnum-p1">150</span></div>
+          </div>
+          <div class="versus" aria-hidden="true">VS</div>
+          <div class="player-card player-two" id="card-p2">
+            <div class="player-heading"><span class="player-marker" aria-hidden="true">02</span><span class="player-name" id="name-p2">Computador</span><span class="charge" id="charge-p2" title="Cargas de energia">0 / 2</span></div>
+            <div class="health-row"><div class="health-track"><div class="health-fill" id="hp-p2"></div></div><span class="health-number" id="hpnum-p2">150</span></div>
+          </div>
+        </div>
+        <div class="arena-meta"><span class="round" id="round-label">RODADA 01</span><span class="wind" id="wind">Vento calmo</span><span class="arena-label">VALE DOS VENTOS</span></div>
+        <div class="board-wrap"><canvas id="board" width="1200" height="600" aria-label="Campo de batalha. Use os controles de ângulo e força para mirar, ou arraste sobre o campo.">Seu navegador precisa oferecer suporte a Canvas para exibir o campo de batalha.</canvas></div>
+        <div class="arena-foot"><span class="turn"><span class="live-dot" aria-hidden="true"></span><span id="turn-label">Pronto para o duelo?</span></span><span class="shot-hint" id="shot-hint">Sua próxima grande ideia começa com um tiro.</span></div>
+      </section>
+
+      <aside class="command-deck" aria-label="Comandos da partida">
+        <div class="deck-heading"><span class="eyebrow" id="phase-label">CENTRAL DE COMANDO</span><span class="timer" id="timer" aria-label="Tempo restante">—</span></div>
+
+        <section class="deck-panel question-panel" id="question-box" hidden aria-label="Desafio de matemática">
+          <span class="step-kicker">01 <span>CARREGUE SUA ESTRATÉGIA</span></span>
+          <h2>Uma conta.<br>Uma vantagem.</h2>
+          <p class="panel-description">Acerte para ganhar energia e aumentar o dano em 50% neste turno.</p>
+          <div class="question-expression" id="question-text">7 × 8</div>
+          <label class="input-label" for="question-answer">Qual é o resultado?</label>
+          <div class="answer-row"><input id="question-answer" type="text" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="Sua resposta" aria-describedby="question-feedback"><button id="question-submit" class="btn btn-primary answer-button" type="button">Conferir resposta</button></div>
+          <div class="mini-timer" aria-hidden="true"><div id="question-timerbar"></div></div>
+          <p class="question-feedback" id="question-feedback" role="status" aria-live="polite" hidden></p>
+          <p class="deck-note">Errar faz parte. Você continua podendo atirar.</p>
+        </section>
+
+        <section class="deck-panel aim-panel" id="controls" hidden aria-label="Ajustes do disparo">
+          <span class="step-kicker">02 <span>ENCONTRE SUA TRAJETÓRIA</span></span>
+          <div class="aim-title"><h2>Na sua mira.</h2><span id="bonus-label" class="bonus-label">Tiro normal</span></div>
+          <div class="aim-adjustment">
+            <div class="adjustment-label"><label for="angle">Ângulo</label><strong id="angle-val">45°</strong></div>
+            <div class="slider-control"><button class="step-btn" id="angle-minus" type="button" aria-label="Diminuir ângulo">−</button><input id="angle" type="range" min="5" max="85" value="45" aria-label="Ângulo do canhão"><button class="step-btn" id="angle-plus" type="button" aria-label="Aumentar ângulo">+</button></div>
+          </div>
+          <div class="aim-adjustment">
+            <div class="adjustment-label"><label for="power">Força</label><strong id="power-val">60</strong></div>
+            <div class="slider-control"><button class="step-btn" id="power-minus" type="button" aria-label="Diminuir força">−</button><input id="power" type="range" min="20" max="100" value="60" aria-label="Força do disparo"><button class="step-btn" id="power-plus" type="button" aria-label="Aumentar força">+</button></div>
+          </div>
+          <div class="weapon-label"><span>Escolha sua munição</span><span>ENERGIA</span></div>
+          <div class="weapons" id="weapons" role="group" aria-label="Tipo de munição">
+            <button class="wbtn selected" data-w="normal" type="button" aria-pressed="true"><span class="ammo-symbol normal-ammo" aria-hidden="true">●</span><strong>Normal</strong><small>Grátis</small></button>
+            <button class="wbtn" data-w="triple" type="button" aria-pressed="false"><span class="ammo-symbol triple-ammo" aria-hidden="true">●●●</span><strong>Triplo</strong><small>1 carga</small></button>
+            <button class="wbtn" data-w="mega" type="button" aria-pressed="false"><span class="ammo-symbol mega-ammo" aria-hidden="true">✦</span><strong>Mega</strong><small>2 cargas</small></button>
+          </div>
+          <p class="weapon-hint" id="weapon-hint">Um disparo preciso. Nenhuma carga necessária.</p>
+          <button class="btn btn-fire" id="fire" type="button"><svg class="icon"><use href="#i-target"/></svg>Disparar<span class="key-hint">ESPAÇO</span></button>
+          <p class="deck-note keyboard-note">↑ ↓ ângulo · ← → força · 1, 2, 3 munição</p>
+          <p class="deck-note touch-note">Arraste no campo para mirar. Use + e − para refinar.</p>
+        </section>
+
+        <section class="deck-panel status-panel" id="status-box" aria-label="Situação da partida">
+          <div class="status-art" aria-hidden="true"><svg viewBox="0 0 160 120"><circle cx="80" cy="60" r="45" fill="#e6ede1"/><path d="M26 98h108" stroke="#b9c9bc" stroke-width="3" stroke-linecap="round"/><path d="m60 65 48-36 13 17-49 35Z" fill="#315e65"/><path d="m106 27 18 23 7-6-18-23Z" fill="#163c42"/><path d="M44 82h55l-9 13H39Z" fill="#e58a48"/><circle cx="52" cy="92" r="15" fill="#163c42"/><circle cx="52" cy="92" r="6" fill="#f6c38e"/><circle cx="93" cy="92" r="11" fill="#163c42"/><circle cx="93" cy="92" r="4" fill="#f6c38e"/><path d="m134 21 6-6m-14-3 2-8m12 29 8-1" stroke="#e58a48" stroke-width="3" stroke-linecap="round"/></svg></div>
+          <h2 id="status-title">Prepare sua estratégia.</h2>
+          <p id="status-text" class="panel-description" role="status" aria-live="polite">Matemática para carregar. Pontaria para surpreender.</p>
+          <span class="status-stamp">PENSE · MIRE · DESCUBRA</span>
+        </section>
+      </aside>
+    </main>
+    <footer class="page-footer"><span>Uma boa estratégia começa com uma boa pergunta.</span><span>MATEMÁTICA EM JOGO <span class="footer-dot">●</span> V3.0</span></footer>
+  </div>
+
+  <div class="overlay menu-overlay" id="menu">
+    <section class="modal menu-modal" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+      <div class="menu-banner" aria-hidden="true"><span class="banner-caption">VALE DOS VENTOS</span><svg viewBox="0 0 600 150" preserveAspectRatio="xMidYMid slice"><circle cx="405" cy="34" r="43" fill="#ffd88e"/><path d="M0 100 90 36l90 69 113-83 126 91 96-62 85 59v40H0Z" fill="#91b5a4"/><path d="M0 117 109 78l96 37 104-37 103 43 102-31 86 29v31H0Z" fill="#497d79"/><path d="M0 132q120-35 220 0t190-4 190 0v22H0Z" fill="#254f52"/><path d="M131 61q135-120 309 4" fill="none" stroke="#fff5d7" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 12"/><path d="m100 119 47-39 12 15-47 39Z" fill="#309bb8"/><path d="m145 76 18 21 5-4-18-22Z" fill="#183f48"/><path d="M85 129h47v10H85Z" fill="#c98b52"/><circle cx="96" cy="136" r="12" fill="#153e44"/><circle cx="96" cy="136" r="5" fill="#ffdb9e"/><circle cx="127" cy="136" r="9" fill="#153e44"/><path d="m486 119-47-39-12 15 47 39Z" fill="#eb8268"/><path d="m441 76-18 21-5-4 18-22Z" fill="#5d4843"/><path d="M455 129h47v10h-47Z" fill="#c98b52"/><circle cx="491" cy="136" r="12" fill="#153e44"/><circle cx="491" cy="136" r="5" fill="#ffdb9e"/><circle cx="460" cy="136" r="9" fill="#153e44"/></svg></div>
+      <div class="menu-body">
+        <div class="menu-intro"><span class="eyebrow">PONTARIA + MATEMÁTICA + ESTRATÉGIA</span><h2 id="menu-title">Toda batalha começa<br>com uma boa ideia.</h2><p>Resolva, mire e conquiste o vale. Seu próximo duelo começa aqui.</p></div>
+        <div class="setup-grid">
+          <label class="setup-field" for="mode"><span>Com quem você joga?</span><select id="mode"><option value="ai">Contra o computador</option><option value="pvp">Dois jogadores · mesmo aparelho</option></select></label>
+          <label class="setup-field" for="difficulty"><span>Desafio da batalha</span><select id="difficulty"><option value="easy">Explorador · fácil</option><option value="normal" selected>Estrategista · médio</option><option value="hard">Comandante · difícil</option></select></label>
+          <label class="setup-field" for="math-level"><span>Nível das contas</span><select id="math-level"><option value="easy">Fácil</option><option value="normal" selected>Médio</option><option value="hard">Difícil</option></select></label>
+          <label class="setup-field" for="operation"><span>O que vamos praticar?</span><select id="operation"><option value="mixed">Todas as operações</option><option value="add">Adição</option><option value="sub">Subtração</option><option value="mul">Multiplicação</option><option value="div">Divisão</option></select></label>
+        </div>
+        <label class="timer-option" for="timed"><input id="timed" type="checkbox" checked><span><strong>Jogar com tempo</strong><small>Desmarque para pensar no seu ritmo.</small></span><span class="toggle-track" aria-hidden="true"></span></label>
+        <button class="btn btn-primary start-button" id="start-game" type="button">Começar batalha<svg class="icon"><use href="#i-arrow"/></svg></button>
+        <div class="menu-secondary"><button class="text-button" id="training" type="button">Treinar sem pressa</button><span aria-hidden="true">·</span><button class="text-button" id="tutorial-start" type="button">Como jogar</button></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay" id="result" hidden>
+    <section class="modal result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+      <div class="medal" aria-hidden="true"><svg viewBox="0 0 80 80"><path d="m24 48-7 27 17-7 6 8 7-29m8 1 8 27-17-7-6 8-7-29" fill="#e78156"/><circle cx="40" cy="32" r="26" fill="#f4c36b" stroke="#d89d3e" stroke-width="3"/><path d="m40 15 5 11 12 2-9 9 2 12-10-6-10 6 2-12-9-9 12-2Z" fill="#fff4d5"/></svg></div>
+      <span class="eyebrow">CADA PARTIDA, UMA DESCOBERTA</span><h2 id="result-title">Batalha concluída!</h2><p id="result-text"></p><div class="result-stats" id="result-stats"></div>
+      <div class="modal-actions"><button class="btn btn-primary" id="play-again" type="button">Jogar de novo</button><button class="btn btn-secondary" id="menu-button" type="button">Mudar configurações</button></div>
+    </section>
+  </div>
+
+  <div class="overlay" id="pause-overlay" hidden>
+    <section class="modal pause-modal" role="dialog" aria-modal="true" aria-labelledby="pause-title"><div class="pause-mark" aria-hidden="true"><svg class="icon"><use href="#i-pause"/></svg></div><span class="eyebrow">UMA PAUSA NA BATALHA</span><h2 id="pause-title">A estratégia pode esperar.</h2><p>Seu tempo está parado. Volte quando estiver pronto.</p><div class="modal-actions"><button class="btn btn-primary" id="resume" type="button">Continuar partida</button><button class="btn btn-secondary" id="exit-game" type="button">Voltar ao menu</button></div></section>
+  </div>
+
+  <div class="overlay tutorial-overlay" id="tutorial" hidden>
+    <section class="modal tutorial-modal" role="dialog" aria-modal="true" aria-labelledby="tutorial-title"><button class="tutorial-close icon-btn" id="tutorial-close" type="button" aria-label="Fechar tutorial">×</button><span class="eyebrow" id="tutorial-step">PASSO 1 DE 3</span><div class="tutorial-art" aria-hidden="true"><svg class="icon"><use href="#i-target"/></svg><span>+ × ÷ −</span></div><h2 id="tutorial-title">Uma conta abre o caminho.</h2><p id="tutorial-text">Resolva o desafio para ganhar uma carga de energia e um bônus no próximo disparo.</p><button class="btn btn-primary" id="tutorial-next" type="button">Próximo passo<svg class="icon"><use href="#i-arrow"/></svg></button></section>
+  </div>
+
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
+
